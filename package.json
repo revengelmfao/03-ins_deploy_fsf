@@ -16,7 +16,17 @@
     "seed": "cd server && npm run seed",
     "render-build": "npm install && npm run build",
     "cypress": "npx cypress open",
-    "test": "npx cypress run"
+    "test": "npx cypress run",
+    "install:all": "cd server && npm i && cd ../client && npm i",   
+    "test:component": "npx cypress run --component",
+    "test:e2e": "npx cypress run",
+    "test:gui": "npx cypress open --detached",
+    "coverage": "npx nyc report",
+    "test:coverage": "npm run test:component && npm run test:e2e && npm run coverage",
+    "clean": "rm -rf .nyc_output && rm -rf coverage && rm -rf server/dist && rm -rf client/dist && rm -rf **/tsconfig.tsbuildinfo",
+    "prestart": "npm run clean",
+    "prestart:dev": "npm run clean",
+    "postinstall": "npm run install:all"
   },
   "keywords": [],
   "author": "",
